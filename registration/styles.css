@@ -18,7 +18,7 @@
     font-size: 14;   
     border-radius: 5px; 
     border-width: 2px;
-    background-color: aliceblue;    
+    /* background-color: aliceblue;     */
 }
 
 .button:hover{
