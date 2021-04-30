@@ -1,12 +1,39 @@
-.input {
-    text-align: center;
-    border-radius: 15px;
-    border: 3px solid black;
-    padding: 20px;
-    width: 300px;
-    height: 400px;
-  }
-  
-  .font{
-    font-size: 20;
-  }
+.back{
+  background-color: aliceblue;
+}
+
+.info {
+  text-align: center;
+  border-radius: 15px;
+  border: 3px solid black;
+  padding: 0 20px;
+  width: 345px;
+  height: 220px;
+  margin-right:30; 
+}
+
+.payment {
+  text-align: center;
+  border-radius: 15px;
+  border: 3px solid black;
+  padding: 0 20px;
+  width: 345px;
+  height: 220px;
+  margin-left:30; 
+}
+
+.shipping {
+  text-align: center;
+  border-radius: 15px;
+  border: 3px solid black;
+  padding: 0 20px;
+  width: 840px;
+  height: 105px;
+  position: absolute;
+  bottom: 250px;
+}
+
+.font{
+  font-size: 20;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

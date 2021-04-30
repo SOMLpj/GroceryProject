@@ -3,25 +3,23 @@
 ?>
 
 <html>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="style.css">
 </html>
 
 <!-- SESSION STUFF LATER -->
 <?php
 ?>
 
-<body style = "background-color: rgba(248, 245, 242, 0.1);">
-    <p style = "text-align:center; font-size: 40; padding-top: 100"><b>User Center</b></p>
+<body class = "back">
+    <p style = "text-align:center; font-size: 40; padding-top: 100; font-family: Verdana, Geneva, Tahoma, sans-serif;"><b>User Center</b></p>
 <div style = "padding-top: 50; display: flex; justify-content: center;">
 <?php     
     $conn = mysqli_connect("sql3.freesqldatabase.com", "sql3402886", "gn4yJmWUfg","sql3402886");
     if (!$conn) {  
         die("Connection failed: " . mysqli_connect_error());
     }
+    // $user_id = $_SESSION['user_id']; COMMENTED OUT TO SHOWCASE USER CENTER. 
     $user_id = 1;
-    echo $user_id;
-    
-
 
     $sql = "SELECT first_name FROM user WHERE user_id = $user_id";
     $result = mysqli_query($conn, $sql);
@@ -60,33 +58,50 @@
     $year =  mysqli_fetch_assoc($result)['exp_year'];
 
     
-    echo "<div class=\"input\">";
-    echo"<p class=\"font\">";
-    echo "<b>" . $first_name;
-    echo " " . $last_name;
-    echo "<br>";
-    echo "<br>";    
-    echo $email;
-    echo "<br>";
-    echo "<br>";
-    echo $phone;
-    echo "<br>";
-    echo "<br>";
-    echo $payment;
-    echo "<br>";
-    echo "<br>";
-    echo $num;
-    echo "<br>";
-    echo "<br>";
-    echo $month;
-    echo "<br>";
-    echo "<br>";
-    echo $year;
-    echo "<br>";
-    echo "<br>";
-    echo $address . "</b>";
-    echo "</p>";
+    echo "<div class=\"info\">";
+        echo"<p class=\"font\">";
+            echo "<b>" . "Basic Information". "</b>";
+            echo "<br>";
+            echo "<br>";
+            echo "<b>" . "Name: ". "</b>" . $first_name;
+            echo " " . $last_name;
+            echo "<br>";
+            echo "<br>";    
+            echo "<b>" . "Email: ". "</b>" . $email ;
+            echo "<br>";
+            echo "<br>";
+            echo "<b>" . "Phone Number: ". "</b>" . $phone;
+            echo "<br>";
+            echo "<br>";
+        echo "</p>";
     echo "</div>";
+    
+    echo "<div class=\"payment\">";
+        echo"<p class=\"font\">";
+            echo "<b>" . "Payment Information". "</b>";
+            echo "<br>";
+            echo "<br>";
+            echo "<b>" . "Name on Card: ". "</b>" . $payment;
+            echo "<br>";
+            echo "<br>";
+            echo "<b>" . "CCN: ". "</b>" . $num;
+            echo "<br>";
+            echo "<br>";
+            echo "<b>" . "Expiration Date    ". "</b>" . $month . "/";
+            echo $year;
+        echo "</p>";
+    echo "</div>";
+    
+    echo "<div class=\"shipping\">";
+        echo"<p class=\"font\">";
+        echo "<b>" . "Shipping Address". "</b>";
+        echo "<br>";
+        echo "<br>";
+        echo $address;
+        echo "</p>";
+    echo "</div>";
+    
+    
 ?>   
 </div>
 </body>
