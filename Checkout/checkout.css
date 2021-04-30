@@ -1,0 +1,17 @@
+.selection {
+
+  border: 2px solid red;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.button {
+  background-color: rgb(255, 225, 0);
+  border-radius: 8px;
+
+}
+
+input[type=submit] {
+  padding: 4px 16px;
+  font-size: 16;
+}
