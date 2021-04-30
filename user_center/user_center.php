@@ -9,6 +9,7 @@
 <!-- SESSION STUFF LATER -->
 <!-- <?php
     $user_id = $_SESSION['user_id']; //store in array
+    asdasdsadasdads
     
 ?> -->
 
