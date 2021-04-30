@@ -35,6 +35,6 @@
             }
         ?>      
     </br>
-    <a href="Registration.html">You're information was saved! Login</a>
+    <a href="..\user_center\user_center.php">You're information was saved! Login</a>
     </body>
 </html>
