@@ -57,6 +57,44 @@
     $result = mysqli_query($conn, $sql);
     $year =  mysqli_fetch_assoc($result)['exp_year'];
 
+    $sql = "SELECT FK_payment_id, FK_address_id FROM user WHERE user_id='$user_id'";
+    $results = mysqli_query($conn, $sql);
+    if ($row=mysqli_fetch_assoc($results)) {
+      //Get id first
+      $defaultPayment_id = $row['FK_payment_id'];
+      $defaultAddress_id = $row['FK_address_id'];
+  
+      $sql = "SELECT name_on_card, card_number, exp_month, exp_year, cvc_code FROM customer_payment WHERE payment_id='$defaultPayment_id'";
+  
+      $results = mysqli_query($conn, $sql);
+      if ($row=mysqli_fetch_assoc($results)){
+        $name_on_card = $row['name_on_card'];
+        $card_number = $row['card_number'];
+        $exp_month = $row['exp_month'];
+        $exp_year = $row['exp_year'];
+        $cvc_code = $row['cvc_code'];
+        //Create the default payment option
+        $defaultPaymentOption = substr($card_number, 15);
+      }
+  
+      $sql = "SELECT street, city, state, zip_code FROM customer_address WHERE address_id='$defaultAddress_id'";
+  
+      $results = mysqli_query($conn, $sql);
+      if ($row=mysqli_fetch_assoc($results)){
+        $street = $row['street'];
+        $city = $row['city'];
+        $state = $row['state'];
+        $zipCode = $row['zip_code'];
+        //create the default address option
+        $defaultAddressOption = $street. ", ". $city. ", ". $state. ", ". $zipCode;
+      }
+  
+    }
+    else {
+      echo mysqli_error($conn);
+    }
+    
+
     
     echo "<div class=\"info\">";
         echo"<p class=\"font\">";
@@ -84,7 +122,7 @@
             echo "<b>" . "Name on Card: ". "</b>" . $payment;
             echo "<br>";
             echo "<br>";
-            echo "<b>" . "CCN: ". "</b>" . $num;
+            echo "<b>" . "Card ends with: ". "</b>" . $defaultPaymentOption;
             echo "<br>";
             echo "<br>";
             echo "<b>" . "Expiration Date    ". "</b>" . $month . "/";
@@ -97,11 +135,9 @@
         echo "<b>" . "Shipping Address". "</b>";
         echo "<br>";
         echo "<br>";
-        echo $address;
+        echo $defaultAddressOption;      
         echo "</p>";
     echo "</div>";
-    
-    
 ?>   
 </div>
 </body>
