@@ -333,3 +333,10 @@ header {
     background-color: white;
     color: #4c7c7d;
 }
+
+.summary-check-out > button:disabled {
+    border: 2px solid #D8D8D8;
+    background-color: #D8D8D8;
+    color: #8D8D8D;
+    cursor: auto;
+}
