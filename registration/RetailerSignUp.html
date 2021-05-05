@@ -1,0 +1,24 @@
+<html>
+    <link rel="stylesheet" href="retailer_style.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <head>
+    </head>
+
+    <body style = "background-image: -moz-linear-gradient(aliceblue, white); height:890px;">       
+        <h2 style = "padding-top: 50;  font-size: 35; text-align: center; font-family:Verdana, Geneva, Tahoma, sans-serif">Retailers, we speak your language!</h2>
+        <br>
+        <form action="AccountCreation.php" method="post" class = "input1"> 
+            <input type="text" name="first_name" placeholder="First name" style =" height:30; width: 200;" class ="form">         
+            <input type="text" name="last_name" placeholder="Last name" style="margin-top: 10; height:30; width: 200;"class ="form">   
+            <input type="password" name="password_encrypted" placeholder="Password" style="margin-top: 10;  height:30; width: 200;"class ="form">  
+            <input type="text" name="email" placeholder= "Email" style="margin-top: 10;  height:30; width: 200;"class ="form">  
+            <input type="tel" name="phone" placeholder="Phone number" style="margin-top: 10;  height:30; width: 200;"class ="form">  
+            <input type="text" name="retailer_id" placeholder="Retailer Code" style ="margin-top: 10; height:30; width: 200;" class ="form" >         
+            <input type="submit" value ="Sign up" style="margin-top: 30; margin-bottom: 15; border-radius: 20px; height:30; width: 150;"class ="button">              
+            <div class="tooltip1"><i>Not sure what the retailer code is?</i>
+                <span class="tooltiptext1" style = "text-align: center;">The retailer code is normally provided by management. If you're unsure what the code is, type 123 to be added to our retailer database.</span>
+            </div> 
+        </form>  
+    </body>
+</html>

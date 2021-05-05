@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Shopping Cart</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../js/layout.js"></script>
+        <link rel="stylesheet" href="../css/layout.css">
+    </head>
+
+    <header>
+        <!-- Navigation bar -->
+        <div class="menu-bar-container">
+            <div class="menu-bar-logo-wrapper">
+                <div class="menu-bar-logo">
+                    <img src="../resource/icon/logo.svg">
+                </div>
+            </div>
+            <div class="menu-bar-search-wrapper">
+                <form>
+                    <input type="text" placeholder="Search">
+                    <button type="submit">
+                        <img src="../resource/icon/search-icon.svg">
+                    </button>
+                </form>
+            </div>
+            <div class="menu-bar-user-wrapper">
+                <div class="user-info-wrapper">
+                    <div class="menu-bar-user-icon">
+                        <img src="../resource/icon/user-icon.svg">
+                    </div>
+                    <div class="user-name">
+                        <span>Username</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-bar-cart-wrapper">
+                <div class="cart-info-wrapper">
+                    <div class="menu-bar-cart-icon">
+                        <img src="../resource/icon/cart-icon.svg">
+                    </div>
+                    <span>Cart:&nbsp;</span>
+                    <span id="cart-item-count-text">Count</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <body>
+        <div class="main-container">
+            <div class="main-cart-container">
+                <div class="cart-wrapper">
+                    <div class="item-row-wrapper cart-title-wrapper">
+                        <div class="product-img-wrapper"></div>
+                        <div class="product-name-wrapper product-name-title-wrapper">
+                            Item
+                        </div>
+                        <div class="product-price-wrapper">Price</div>
+                        <div class="product-quantity-wrapper">Quantity</div>
+                        <div class="product-total-wrapper">Total</div>
+                        <div class="product-remove-wrapper"></div>
+                    </div>
+                    <div class="empty-cart-msg-row-wrapper">
+                        <span>Your cart is empty.</span>
+                    </div>
+                    <div class="item-row-wrapper" id="row-1">
+                        <div class="product-img-wrapper">
+                            <img src="../resource/img/default/product_large.png">
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span>
+                                Name
+                            </span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            Price
+                        </div>
+                        <div class="product-quantity-wrapper">
+                            <!-- Decrement button -->
+                            <button class="decrement">
+                                &minus;
+                            </button>
+                            <!-- Item quantity -->
+                            <span>3</span>
+                            <!-- Increment button -->
+                            <button class="increment">
+                                &plus;
+                            </button>
+                        </div>
+                        <div class="product-total-wrapper">
+                            Total
+                        </div>
+                        <div class="product-remove-wrapper">
+                            <button class="remove">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-row-wrapper">
+                        <div class="product-img-wrapper">
+                            <img src="../resource/img/default/product_large.png">
+                        </div>
+                        <div class="product-name-wrapper">
+                            Name
+                        </div>
+                        <div class="product-price-wrapper">
+                            Price
+                        </div>
+                        <div class="product-quantity-wrapper">
+                            Quantity
+                        </div>
+                        <div class="product-total-wrapper">
+                            Total
+                        </div>
+                        <div class="product-remove-wrapper">
+                            Remove
+                        </div>
+                    </div>
+                    <div class="item-row-wrapper">
+                        <div class="product-img-wrapper">
+                            <img src="../resource/img/default/product_large.png">
+                        </div>
+                        <div class="product-name-wrapper">
+                            Name
+                        </div>
+                        <div class="product-price-wrapper">
+                            Price
+                        </div>
+                        <div class="product-quantity-wrapper">
+                            Quantity
+                        </div>
+                        <div class="product-total-wrapper">
+                            Total
+                        </div>
+                        <div class="product-remove-wrapper">
+                            Remove
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-summary-container">
+                <div class="summary-wrapper">
+                    <div class="summary-title">Summary:</div>
+                    <div class="summary-item-count">3 items</div>
+                    <div class="summary-subtotal">Subtotal: $103.23</div>
+                    <div class="summary-check-out">
+                        <button>Check out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

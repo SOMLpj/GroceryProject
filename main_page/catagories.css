@@ -1,0 +1,152 @@
+/* CSS files add styling rules to your content */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Garamond, serif;
+}
+
+.wrapper {
+  border-bottom:  1px solid black;
+  padding: 3%;
+  width: 75%;
+  margin: auto;
+}
+
+/* CSS for links */
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+/* CSS for menu */
+.menu {
+  text-align: right;
+  margin: 1% 0;
+}
+
+.menu ul {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px;
+  list-style-type: none;
+}
+
+.menu ul li {
+  font-size: 16;
+  float: left;
+  padding: 15px;
+}
+
+
+
+#cart {
+  display: inline-block;
+  padding: 5px 5px 5px 50px;
+  list-style-type: none;
+}
+
+#cart a {
+  font-size: 16;
+  float: left;
+  padding: 15px 5px 15px 2px;
+  color: black;
+}
+
+/* CSS for search */
+
+ form.search {
+  text-align: left;
+  margin: 11;
+  border: 1px solid grey;
+  float: left;
+  width: 25%;
+}
+
+ input[type=text] {
+  text-align: left;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+/* CSS for catagories */
+
+.catagories {
+  margin: 1% 0;
+  text-align: center;
+}
+
+.catagories ul {
+  display: inline-block;
+  border: 1px;
+  list-style-type: none;
+}
+
+.catagories ul li {
+  font-size: 25;
+  float: left;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* CSS for items */
+
+.items {
+  margin: 1% 0;
+  text-align: center;
+}
+
+.items ul {
+  display: inline-block;
+  border: 1px;
+  list-style-type: none;
+}
+
+.items ul li {
+  width: 200px;
+  height: 300px;
+  display: inline-block;
+  border: 1px solid black;
+
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 50px 50px;
+}
+
+.items li img {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+}
+
+
+.description {
+  color: black;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.button {
+  padding-top: 15px;
+}
+
+input {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
