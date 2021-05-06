@@ -20,12 +20,10 @@
             $sql = "INSERT INTO user (email, first_name, last_name, password_encrypted, phone) VALUES ('$email','$first_name','$last_name','$password_encrypted','$phone')";
             $results = mysqli_query($conn, $sql);
             if ($results){
-                echo "Great! You're registered.";
                 $sql = "SELECT user_id FROM user WHERE email= '$email'";
                 $results = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_array($results);
                 $_SESSION['user_id'] = $row['user_id'];
-                echo $_SESSION['user_id'];
             }
                 
             else{
@@ -35,6 +33,9 @@
             }
         ?>      
     </br>
-    <a href="..\user_center\user_center.php">You're information was saved! Login</a>
+        <div style = "text-align:center;"> 
+        <h3>You're information was saved!</h3>
+        <h3><a href="..\login.php">Login</h3></a> 
+        </div>    
     </body>
 </html>

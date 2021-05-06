@@ -140,4 +140,7 @@
     echo "</div>";
 ?>   
 </div>
+<div style = "text-align:center; padding-top: 200">
+    <h3><a href="..main_page\catagories.php">Main Page</h3></a>
+</div>    
 </body>
