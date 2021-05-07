@@ -1,3 +1,11 @@
+<?php
+    if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
+        header("location: ../front_page/front_page.php");
+        echo "alert('already login')";
+        exit;
+    }
+?>
+
 <html>
     <link rel="stylesheet" href="styles.css">
     <head><title>Registration</title></head>
