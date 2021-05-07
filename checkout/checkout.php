@@ -2,7 +2,7 @@
   //start session
   session_start();
   //Get customer id
-  $_SESSION['user_id'] = 1;
+  $_SESSION['user_id'] = 51;
   $customerId = $_SESSION['user_id'];
   //Set default timezone. (Since our website is only for San Jose downtown area,
   //we only need timezone of San Jose, which is same as Los Angeles)

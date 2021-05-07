@@ -1,0 +1,62 @@
+html {
+  background-color: #edeae7;
+}
+
+h1 {
+  text-align: center;
+}
+
+.flex-container {
+  padding: 50; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.order_history {
+  flex: 25%;
+  border-radius: 15px;
+  border: 2px solid black;
+  max-width: 25%;
+  padding: 0 20px;
+  margin: 10px;
+}
+.order_history table {
+  margin-top: 8px;
+  width: 100%;
+  table-layout:fixed;
+}
+
+@media (max-width: 300px) {
+  .order_history {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+.order_history td {
+  border-top: 1px dotted black;
+  text-align: center;
+  height: 40px;
+}
+
+.date {
+  color: blue;
+}
+
+.date td {
+  text-align: center;
+  border-top: none;
+  height: 25px;
+}
+
+.total {
+  color: blue;
+}
+
+.total td {
+  text-align: right;
+  border-top: none;
+  border-bottom: 1px solid black;
+  height: 25px;
+}
