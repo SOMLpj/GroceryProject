@@ -10,7 +10,7 @@
                     <span data-feather="plus-circle"></span>
                     Add New Product
                 </a>
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="../../index.php">
                     <span data-feather="log-out"></span>
                     Exit Inventory Management
                 </a>
