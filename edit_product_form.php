@@ -4,7 +4,7 @@ ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
 
-require_once 'classes/product.php';
+require_once 'classes/product_class.php';
 
 $objProduct = new Product();
 
@@ -21,24 +21,28 @@ if (isset($_GET['edit_id'])) {
 
 // POST
 if (isset($_POST['btn_save'])) {
-  $product_name   = strip_tags($_POST['product_name']);
-  $price          = strip_tags($_POST['price']);
-  $weight         = strip_tags($_POST['weight']);
-  $description    = strip_tags($_POST['description']);
-  $image          = strip_tags($_POST['image']);
-  $stock          = strip_tags($_POST['stock']);
-  $FK_category_id = strip_tags($_POST['FK_category_id']);
+  $product_name     = strip_tags($_POST['product_name']);
+  $price            = strip_tags($_POST['price']);
+  $discount         = strip_tags($_POST['discount']);
+  $unit             = strip_tags($_POST['unit']);
+  $weight_per_item  = strip_tags($_POST['weight_per_item']);
+  $item_per_pack    = strip_tags($_POST['item_per_pack']);
+  $shipping_weight  = strip_tags($_POST['shipping_weight']);
+  $description      = strip_tags($_POST['description']);
+  $image            = strip_tags($_POST['image']);
+  $stock            = strip_tags($_POST['stock']);
+  $FK_category_id   = strip_tags($_POST['FK_category_id']);
 
   try {
     if ($product_id != null) {
-      if ($objProduct->update($product_name, $price, $weight, $description, $image, $stock, $FK_category_id, $product_id)) {
-        $objProduct->redirect('index.php?updated');
+      if ($objProduct->update($product_name, $price, $discount, $unit, $weight_per_item, $item_per_pack, $shipping_weight, $description, $image, $stock, $FK_category_id, $product_id)) {
+        $objProduct->redirect('productsInventory_view.php?updated');
       }
     } else {
-      if ($objProduct->insert($product_name, $price, $weight, $description, $image, $stock, $FK_category_id)) {
-        $objProduct->redirect('index.php?inserted');
+      if ($objProduct->insert($product_name, $price, $discount, $unit, $weight_per_item, $item_per_pack, $shipping_weight, $description, $image, $stock, $FK_category_id)) {
+        $objProduct->redirect('productsInventory_view.php?inserted');
       } else {
-        $objProduct->redirect('index.php?error');
+        $objProduct->redirect('productsInventory_view.php?error');
       }
     }
   } catch (PDOException $e) {
@@ -61,7 +65,7 @@ if (isset($_POST['btn_save'])) {
                 <!-- Sidebar menu -->
                 <?php require_once 'includes/sidebar.php'; ?>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                  <h1 style="margin-top: 10px">Add / Edit Product</h1>
+                  <h1 style="margin-top: 10px">Edit Product</h1>
                   <p>Required fields are in (*)</p>
                   <form method="post">
                     <div class="form-group">
@@ -73,12 +77,28 @@ if (isset($_POST['btn_save'])) {
                       <input class="form-control" type="text" name="product_name" id="product_name" placeholder="Enter Product Name" value="<?php print($rowProduct['product_name']); ?>" required maxlength="100">
                     </div>
                     <div class="form-group">
+                      <label for="unit">Product Unit*</label>
+                      <input class="form-control" type="text" name="unit" id="unit" placeholder="Enter Product Unit" value="<?php print($rowProduct['unit']); ?>" required maxlength="100">
+                    </div>
+                    <div class="form-group">
                       <label for="price">Unit Price*</label>
                       <input class="form-control" type="text" name="price" id="price" placeholder="Enter Product Price" value="<?php print($rowProduct['price']); ?>" required maxlength="100">
                     </div>
                     <div class="form-group">
-                      <label for="weight">Weight*</label>
-                      <input class="form-control" type="text" name="weight" id="weight" placeholder="Enter Product Weight" value="<?php print($rowProduct['weight']); ?>" required>
+                      <label for="discount">Discount (%)*</label>
+                      <input class="form-control" type="text" name="discount" id="discount" placeholder="Enter Product Discount" value="<?php print($rowProduct['discount']); ?>" required maxlength="100">
+                    </div>
+                    <div class="form-group">
+                      <label for="weight_per_item">Item's Weight (Lb)*</label>
+                      <input class="form-control" type="text" name="weight_per_item" id="weight_per_item" placeholder="Enter Item's Weight" value="<?php print($rowProduct['weight_per_item']); ?>" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="item_per_pack">Items per Pack *</label>
+                      <input class="form-control" type="text" name="item_per_pack" id="item_per_pack" placeholder="Enter Items per Pack" value="<?php print($rowProduct['item_per_pack']); ?>" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="shipping_weight">Shipping Weight (Lb)*</label>
+                      <input class="form-control" type="text" name="shipping_weight" id="shipping_weight" placeholder="Enter Shipping Weight" value="<?php print($rowProduct['shipping_weight']); ?>">
                     </div>
                     <div class="form-group">
                       <label for="description">Description*</label>
@@ -97,6 +117,7 @@ if (isset($_POST['btn_save'])) {
                       <input class="form-control" type="text" name="FK_category_id" id="FK_category_id" placeholder="Enter Product Category ID" value="<?php print($rowProduct['FK_category_id']); ?>">
                     </div>
                     <input class="btn btn-primary mb-2" type="submit" name="btn_save" value="Save">
+                    <a class="btn btn-danger mb-2" href="productsInventory_view.php" role="button">Cancel</a>
                   </form>
                 </main>
             </div>

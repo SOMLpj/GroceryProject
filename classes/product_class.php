@@ -1,6 +1,6 @@
 <?php
 
-require_once 'database.php';
+require_once 'database_class.php';
 
 class Product {
     private $conn;
@@ -20,12 +20,16 @@ class Product {
     }
 
     // Insert
-    public function insert($product_name, $price, $weight, $description, $image, $stock, $FK_category_id){
+    public function insert($product_name, $price, $discount, $unit, $weight_per_item, $item_per_pack, $shipping_weight, $description, $image, $stock, $FK_category_id){
       try{
-        $stmt = $this->conn->prepare("INSERT INTO product (product_name, price, weight, description, image, stock, FK_category_id) VALUES(:product_name, :price, :weight, :description, :image, :stock, :FK_category_id)");
+        $stmt = $this->conn->prepare("INSERT INTO product (product_name, price, discount, unit, weight_per_item, item_per_pack, shipping_weight, description, image, stock, FK_category_id) VALUES(:product_name, :price, :discount, :unit, :weight_per_item, :item_per_pack, :shipping_weight,  :description, :image, :stock, :FK_category_id)");
         $stmt->bindparam(":product_name", $product_name);
         $stmt->bindparam(":price", $price);
-        $stmt->bindparam(":weight", $weight);
+        $stmt->bindparam(":discount", $discount);
+        $stmt->bindparam(":unit", $unit);
+        $stmt->bindparam(":weight_per_item", $weight_per_item);
+        $stmt->bindparam(":item_per_pack", $item_per_pack);
+        $stmt->bindparam(":shipping_weight", $shipping_weight);
         $stmt->bindparam(":description", $description);
         $stmt->bindparam(":image", $image);
         $stmt->bindparam(":stock", $stock);
@@ -39,12 +43,16 @@ class Product {
 
 
     // Update
-    public function update($product_name, $price, $weight, $description, $image, $stock, $FK_category_id, $product_id){
+    public function update($product_name, $price, $discount, $unit, $weight_per_item, $item_per_pack, $shipping_weight, $description, $image, $stock, $FK_category_id, $product_id){
       try {
-        $stmt = $this->conn->prepare("UPDATE product SET product_name = :product_name, price = :price, weight = :weight, description = :description, image = :image, stock = :stock, FK_category_id = :FK_category_id WHERE product_id = :product_id");
+        $stmt = $this->conn->prepare("UPDATE product SET product_name = :product_name, price = :price, discount = :discount, unit = :unit, weight_per_item = :weight_per_item, item_per_pack = :item_per_pack, shipping_weight = :shipping_weight, description = :description, image = :image, stock = :stock, FK_category_id = :FK_category_id WHERE product_id = :product_id");
         $stmt->bindparam(":product_name", $product_name);
         $stmt->bindparam(":price", $price);
-        $stmt->bindparam(":weight", $weight);
+        $stmt->bindparam(":discount", $discount);
+        $stmt->bindparam(":unit", $unit);
+        $stmt->bindparam(":weight_per_item", $weight_per_item);
+        $stmt->bindparam(":item_per_pack", $item_per_pack);
+        $stmt->bindparam(":shipping_weight", $shipping_weight);
         $stmt->bindparam(":description", $description);
         $stmt->bindparam(":image", $image);
         $stmt->bindparam(":stock", $stock);
