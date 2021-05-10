@@ -1,21 +1,3 @@
-<?php
-  //Start session
-  session_start();
-  //Get customer id
-  $customerId = $_SESSION['user_id'];
-  //Set dedault timezone
-  date_default_timezone_set("America/Los_Angeles");
-  //create connection
-  $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
-  //check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
-  //Sales Tax rate in San Jose, 95112: 9.25%
-  $salesTax = 0.0925;
-  //Shipping status: 1 processing, 2 completed, 3 canceled.
-  $shippingStatus = 0;
-?>
 <html>
   <head>
     <title>Place Order</title>
@@ -27,6 +9,29 @@
     </script>
   </head>
   <?php include_once '../component/head_nav/head_nav.php'; ?>
+  <?php
+    if(!isset($_SESSION)) {
+      //start session
+      session_start();
+    }
+    if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] == false) {
+      echo "<script>notLoginIn()</script>";
+    }
+    //Get customer id
+    $customerId = $_SESSION['user_id'];
+    //Set dedault timezone
+    date_default_timezone_set("America/Los_Angeles");
+    //create connection
+    $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
+    //check connection
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+    //Sales Tax rate in San Jose, 95112: 9.25%
+    $salesTax = 0.0925;
+    //Shipping status: 1 processing, 2 completed, 3 canceled.
+    $shippingStatus = 0;
+  ?>
   <body>
     <?php
       $total = 0;

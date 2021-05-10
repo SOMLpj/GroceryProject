@@ -1,21 +1,3 @@
-<?php
-  if(!isset($_SESSION)) {
-    //start session
-    session_start();
-  }
-  if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] == false) {
-    echo "<script>notLoginIn()</script>";
-  }
-  //Get customer id
-  $customerId = $_SESSION['user_id'];
-  //create connection
-  $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
-  //check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
-?>
-
 <html>
   <head>
     <title>Set Default Address</title>
@@ -23,6 +5,24 @@
     <script><?php include "set_default.js" ?></script>
   </head>
   <?php include_once '../component/head_nav/head_nav.php'; ?>
+  <?php
+    if(!isset($_SESSION)) {
+      //start session
+      session_start();
+    }
+    if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] == false) {
+      echo "<script>notLoginIn()</script>";
+    }
+    //Get customer id
+    $customerId = $_SESSION['user_id'];
+    //create connection
+    $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
+    //check connection
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+  ?>
+
   <body>
     <br><br>
     <h1>Set Default Address</h1>

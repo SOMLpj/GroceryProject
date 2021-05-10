@@ -1,7 +1,3 @@
-<?php
-  session_start();
-  $customerId = $_SESSION['user_id'];
- ?>
 <html>
   <head>
     <title>New Shipping Address</title>
@@ -10,6 +6,16 @@
     </style>
   </head>
   <?php include_once '../component/head_nav/head_nav.php'; ?>
+  <?php
+    if(!isset($_SESSION)) {
+      //start session
+      session_start();
+    }
+    if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] == false) {
+      echo "<script>notLoginIn()</script>";
+    }
+    $customerId = $_SESSION['user_id'];
+  ?>
   <body>
     <div class="addInfo">
     <h2>Add New Shipping Address</h2>

@@ -1,41 +1,3 @@
-<?php
-  if(!isset($_SESSION)) {
-    //start session
-    session_start();
-  }
-  if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] == false) {
-    echo "<script>notLoginIn()</script>";
-  }
-  //Get customer id
-  $customerId = $_SESSION['user_id'];
-  //Set default timezone. (Since our website is only for San Jose downtown area,
-  //we only need timezone of San Jose, which is same as Los Angeles)
-  date_default_timezone_set("America/Los_Angeles");
-  //Get current time
-  $currentTime = date("H:i:s");
-  //The latest time eligible for same day delivery
-  $sameDayDeliveryTime = date_create_from_format("H:i:s", "16:00:00");
-  $sameDayDeliveryTime = date_format($sameDayDeliveryTime, "H:i:s");
-  //Create 3 options for customer select delivery date
-  $firstDay = date("l, M/d");
-  $secondDay = date("l, M/d", strtotime("+1 days"));
-  $thirdDay = date("l, M/d", strtotime("+2 days"));
-  //If current time is later than eligible time, make new 3 days start from
-  //tomorrow
-  if ($currentTime > $sameDayDeliveryTime){
-    $firstDay = date("l, M/d", strtotime("+1 days"));
-    $secondDay = date("l, M/d", strtotime("+2 days"));
-    $thirdDay = date("l, M/d", strtotime("+3 days"));
-  }
-  //Sales Tax rate in San Jose, 95112: 9.25%
-  $salesTax = 0.0925;
-  //create connection
-  $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
-  //check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
- ?>
 <html>
   <head>
     <title>Checkout</title>
@@ -47,6 +9,44 @@
     </script>
   </head>
   <?php include_once '../component/head_nav/head_nav.php'; ?>
+  <?php
+    if(!isset($_SESSION)) {
+      //start session
+      session_start();
+    }
+    if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] == false) {
+      echo "<script>notLoginIn()</script>";
+    }
+    //Get customer id
+    $customerId = $_SESSION['user_id'];
+    //Set default timezone. (Since our website is only for San Jose downtown area,
+    //we only need timezone of San Jose, which is same as Los Angeles)
+    date_default_timezone_set("America/Los_Angeles");
+    //Get current time
+    $currentTime = date("H:i:s");
+    //The latest time eligible for same day delivery
+    $sameDayDeliveryTime = date_create_from_format("H:i:s", "16:00:00");
+    $sameDayDeliveryTime = date_format($sameDayDeliveryTime, "H:i:s");
+    //Create 3 options for customer select delivery date
+    $firstDay = date("l, M/d");
+    $secondDay = date("l, M/d", strtotime("+1 days"));
+    $thirdDay = date("l, M/d", strtotime("+2 days"));
+    //If current time is later than eligible time, make new 3 days start from
+    //tomorrow
+    if ($currentTime > $sameDayDeliveryTime){
+      $firstDay = date("l, M/d", strtotime("+1 days"));
+      $secondDay = date("l, M/d", strtotime("+2 days"));
+      $thirdDay = date("l, M/d", strtotime("+3 days"));
+    }
+    //Sales Tax rate in San Jose, 95112: 9.25%
+    $salesTax = 0.0925;
+    //create connection
+    $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
+    //check connection
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+  ?>
   <body>
     <h1>Checkout</h1>
     <br>
