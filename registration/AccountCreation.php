@@ -7,6 +7,7 @@
     <head><title>Submission</title></head>
     <body>
         <?php  
+            
             $first_name = $_POST["first_name"];
             $last_name = $_POST["last_name"];
             $password_encrypted = password_hash($_POST["password_encrypted"],PASSWORD_DEFAULT);
@@ -26,18 +27,20 @@
                 $_SESSION['user_id'] = $row['user_id'];
                 echo "<div style=\"text-align:center;\">";
                 echo "<h3>Success!</h3>";
+                echo '<a href="../loginpage2/loginpage.php">Login</a>';
                 echo "</div>";
             }
                 
             else{
-                echo"Uh-oh, something went wrong:";
+                echo "<div style=\"text-align:center;\">";
+                echo"Uh-oh, something went wrong! ";
+                echo '<a href="Registration.php">Try Again</a>';
+                echo "</div>";
                 echo mysqli_error($conn);
                 mysqli_close($conn); 
             }
         ?>      
     </br>
-        <div style = "text-align:center;"> 
-        <h3><a href="..\loginpage2\loginpage.php">Login</h3></a> 
-        </div>    
+    
     </body>
 </html>
