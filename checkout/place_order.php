@@ -13,8 +13,9 @@
   }
   //Sales Tax rate in San Jose, 95112: 9.25%
   $salesTax = 0.0925;
- ?>
-
+  //Shipping status: 1 processing, 2 completed, 3 canceled.
+  $shippingStatus = 0;
+?>
 <html>
   <head>
     <title>Place Order</title>
@@ -25,10 +26,13 @@
       <?php include "checkout.js"; ?>
     </script>
   </head>
+  <?php include_once '../component/head_nav/head_nav.php'; ?>
   <body>
     <?php
       $total = 0;
       $totalBeforeTax = 0;
+      $totalDiscount = 0;
+      $totalAfterDiscount = 0;
       $totalWeight = 0;
       $freeDeliveryWeight = 20; //In pounds
       $deliveryFee = 5;
@@ -51,12 +55,13 @@
         $quantity = $row['quantity'];
 
         //Get the item's stock from product database
-        $sql1 = "SELECT stock, product_name, price, shipping_weight FROM product WHERE product_id='$orderProductId'";
+        $sql1 = "SELECT stock, product_name, price, discount, shipping_weight FROM product WHERE product_id='$orderProductId'";
         $results1 = mysqli_query($conn, $sql1);
         while ($row=mysqli_fetch_assoc($results1)){
           $stock = $row['stock'];
           $productName = $row['product_name'];
           $price = $row['price'];
+          $discount = $row['discount'];
           $shippingWeight = $row['shipping_weight'];
         }
         //If the item quantity in the cart is more than the avaliable stock,
@@ -69,6 +74,7 @@
           //Make the array key = product_id, value = quantity
 
           $totalBeforeTax += $price * $quantity;
+          $totalDiscount += $price * ($discount / 100) * $quantity;
           $totalWeight += $shippingWeight * $quantity;
         }
       }
@@ -85,15 +91,17 @@
         exit(""); 
       }
 
-      $orderTax = $totalBeforeTax * $salesTax;
+      $totalAfterDiscount = $totalBeforeTax - $totalDiscount;
+      $orderTax = $totalAfterDiscount * $salesTax;
       $orderTax = round($orderTax, 2);//Round to 2 decimal
-      $total = $totalBeforeTax + $orderTax;
+      $total = $totalAfterDiscount + $orderTax;
       //Add delivery fee if total weigtht is over max free delivery weight
       if ($totalWeight >= $freeDeliveryWeight){
         $shippingFee = $deliveryFee;
         $total += $shippingFee;
       }
       $total = round("$total", 2); //Round to 2 decimal
+
 
       if (isset($_POST["selectedPayment"]) && isset($_POST["selectedAddress"]) && isset($_POST["selectedDate"])){
         if ($_POST["selectedPayment"] && $_POST["selectedAddress"] && $_POST["selectedDate"]){
@@ -110,9 +118,9 @@
           $selectedDate = $_POST["selectedDate"];
           //The time order been placed
           $orderDate = date("Y-m-d H:i:s");
-
+          $shippingStatus = 1;
           //Place order
-          $sql = "INSERT INTO customer_order (FK_customer_id, order_date, order_total, FK_status_id, order_address, order_payment, delivery_date) VALUES ('$customerId', '$orderDate', '$total', '1', '$selectedAddress', '$selectedPayment', '$selectedDate')";
+          $sql = "INSERT INTO customer_order (FK_customer_id, order_date, order_total, FK_status_id, order_address, order_payment, delivery_date) VALUES ('$customerId', '$orderDate', '$total', '$shippingStatus', '$selectedAddress', '$selectedPayment', '$selectedDate')";
           $results = mysqli_query($conn, $sql);
           if ($results) {
             echo "<h2>Thank You! Your Order Has Been Placed!</h2>";
@@ -147,15 +155,15 @@
           //Clear the user's shopping cart
           $sql = "DELETE FROM item_in_cart WHERE FK_customer_id='$customerId'";
           $results = mysqli_query($conn, $sql);
-          if ($results){
-            echo "(Test only) Delete item in cart";
+          if (!$results){
+            echo mysqli_error($conn);
           }
           echo "<br>";
           //Update user's default payment_id and address_id
           $sql = "UPDATE user SET FK_payment_id = '$selectedPaymentId', FK_address_id = '$selectedAddressId' WHERE user_id='$customerId'";
           $results = mysqli_query($conn, $sql);
-          if ($results){
-            echo "(Test only) Update default id";
+          if (!$results){
+            echo mysqli_error($conn);
           }
           echo "<br>";
 
@@ -165,7 +173,6 @@
           echo "Nothing selected";
         }
       }
-
     ?>
     <button class="returnButton" onclick="continueShopping()">Continue Shopping</button>
   </body>

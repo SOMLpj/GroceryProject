@@ -131,7 +131,6 @@ h1 {
 
 .returnButton {
   position: relative;
-  margin-top: 10px;
   margin-right: 50px;
   float:right;
   width: 150px;
@@ -168,4 +167,8 @@ h1 {
   width: auto;
   border: none;
   border-radius: 5px;
+}
+
+.discount td{
+  color: red;
 }

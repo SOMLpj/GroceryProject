@@ -60,3 +60,8 @@ h1 {
   border-bottom: 1px solid black;
   height: 25px;
 }
+
+.a {
+  text-align: center;
+  padding: 50;
+}

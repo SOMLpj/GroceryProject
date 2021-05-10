@@ -17,10 +17,10 @@ h1 {
   border-radius: 15px;
   border: 3px solid black;
   padding: 0 20px;
-  width: 840px;
-  height: 105px;
-  position:absolute;
-  top: 130px;
+  width: fit-content;
+  height: fit-content;
+  position:relative;
+  margin-right:20; 
 }
 
 .payment {
@@ -31,7 +31,6 @@ h1 {
   width: fit-content;
   height: fit-content;
   margin-right:20; 
-  top: 250px;
   position: relative;
 }
 
@@ -41,19 +40,17 @@ h1 {
   border: 3px solid black;
   padding: 0 20px;
   width: fit-content;
-  
-  margin-left:20; 
-  top: 250px;
+  height: fit-content;
+  margin-right:20; 
   position: relative;
 }
 
 .button {
   position: relative;
   margin-left: 10px;
-  float: right;
   width: fit-content;
-  height: 20px;
-  font-size: 80%;
+  height: fit-content;
+  font-size: 100%;
   background-color: rgb(238, 238, 0);
   border-radius: 10px;
   border: 1px solid black;
@@ -73,25 +70,8 @@ p {
   font-size: 16px;
 }
 
-.history_button {
-  position:relative;
-  margin-left: 800px;
-  width: fit-content;
-  height: fit-content;
-  font-size: 100%;
-  background-color: rgb(238, 238, 0);
-  border-radius: 8px;
-  border: 1px solid black;
-  color: black;
-  cursor: pointer;
-}
-
-.history_button:hover{
-  background-color: rgb(255, 217, 50);
-  color: black;
-}
-
 .head_button {
+  padding-top: 50; 
   justify-content: center;
   display: flex;
 }
@@ -105,19 +85,49 @@ p {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 220px;
-  background-color: black;
-  color: #fff;
+  background-color: rgb(238, 238, 0);
+  color: red;
   font-size: 16px;
-  font-weight: lighter;
+  font-weight:normal;
   text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
+  border-radius: 15px;
+  padding: 10px 0;
+  
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
+  top: 150%;
+  left: 50%; 
+  margin-left: -110px;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.addInfo {
+  text-align: center;
+  margin: 50 auto;
+}
+.addInfo_form {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 50 auto;
+}
+
+.input {
+  margin-top: 10px;  
+  margin-bottom: 10px;
+  margin-left: 10px;
+  height: 30px; 
+  width: auto;
+  border: none;
+  border-radius: 5px;
+}
+
+.aInP {
+  border-bottom: none;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
 }

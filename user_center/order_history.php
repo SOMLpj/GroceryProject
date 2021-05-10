@@ -2,6 +2,7 @@
   session_start();
   //Get customer id
   $customerId = $_SESSION['user_id'];
+  $customerId = 1;
   //create connection
   $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
   //check connection
@@ -16,7 +17,9 @@
       <?php include "order_history.css" ?>
     </style>
   </head>
+  <?php include_once '../component/head_nav/head_nav.php'; ?>
   <body>
+    <br><br>
     <h1> Order History</h1>
     <div class="flex-container">
     <?php
@@ -81,9 +84,11 @@
           </table>
         </div>
               <?php
-       }
+      } 
       ?>
-          
     </div>
+    <div class="a">
+    <a class="a" href="user_center.php">Go Back To User Center</a>
+      </div>
   </body>
 </html>
