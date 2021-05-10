@@ -122,7 +122,7 @@ if (isset($_POST['btn_save'])) {
                         <option value="3">3 - Protein</option>
                         <option value="4">4 - Dairy</option>
                         <option value="5">5 - Baked Goods</option>
-                        <option value="6">6 - Snack</option>
+                        <option value="6">6 - Sweet</option>
                       </select>
                     </div>
                     <input class="btn btn-primary mb-2" type="submit" name="btn_save" value="Save">
