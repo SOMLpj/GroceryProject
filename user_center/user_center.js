@@ -9,3 +9,8 @@ function setAddress() {
 function setPayment() {
   window.location = "set_default_payment.php";
 }
+
+function notLoginIn() {
+  alert("Uh-oh, you are not logined in");
+  window.location = "../front_page/front_page.php";
+}

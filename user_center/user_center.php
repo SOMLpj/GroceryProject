@@ -8,7 +8,6 @@
   }
   //Get customer id
   $customerId = $_SESSION['user_id'];
-  $customerId = 1;
   //create connection
   $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
   //check connection

@@ -1,8 +1,13 @@
 <?php
-  session_start();
+  if(!isset($_SESSION)) {
+    //start session
+    session_start();
+  }
+  if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] == false) {
+    echo "<script>notLoginIn()</script>";
+  }
   //Get customer id
   $customerId = $_SESSION['user_id'];
-  $customerId = 1;
   //create connection
   $conn = mysqli_connect("sql3.freesqldatabase.com:3306", "sql3402886", "gn4yJmWUfg", "sql3402886");
   //check connection
