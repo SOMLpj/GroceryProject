@@ -51,7 +51,6 @@
         $expirationYear = $_POST["expirationYear"];
         $securityCode = $_POST["securityCode"];
 
-
         //add payment method
         $sql = "INSERT INTO customer_payment (FK_customer_id, name_on_card, card_number, exp_month, exp_year, cvc_code) VALUES ('$customerId', '$nameOnCard', '$cardNumber', '$expirationMonth', '$expirationYear', '$securityCode')";
         $results = mysqli_query($conn, $sql);

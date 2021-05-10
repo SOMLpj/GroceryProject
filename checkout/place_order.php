@@ -81,7 +81,6 @@
 
       //If there is item that does not have enough stock, print it out and stop execute rest of the code so user cannot place the order.
       if (!empty($notEnoughStockItems)){
-
         echo "Sorry, for ";
         foreach ($notEnoughStockItems as $value) {
            echo $value . ", ";
@@ -101,7 +100,6 @@
         $total += $shippingFee;
       }
       $total = round("$total", 2); //Round to 2 decimal
-
 
       if (isset($_POST["selectedPayment"]) && isset($_POST["selectedAddress"]) && isset($_POST["selectedDate"])){
         if ($_POST["selectedPayment"] && $_POST["selectedAddress"] && $_POST["selectedDate"]){

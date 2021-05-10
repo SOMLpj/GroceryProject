@@ -35,7 +35,6 @@
     while ($row=mysqli_fetch_assoc($results))
     {
       $payment_id = $row['payment_id'];
-      //Create other options but not include the default
       $name_on_card = $row['name_on_card'];
       $card_number = $row['card_number'];
       $exp_month = $row['exp_month'];
